@@ -37,10 +37,6 @@
 - (instancetype)initWithKeySet:(KeySet *)theKeySet;
 - (NSString *)blobIdForBytes:(unsigned char *)buf length:(unsigned long long)length;
 
-- (NSData *)encrypt:(unsigned char *)buf length:(unsigned long long)length error:(NSError * __autoreleasing *)error;
-- (NSInteger)encrypt:(unsigned char *)buf length:(unsigned long long)length intoOutBuffer:(unsigned char *)outbuf outBufferLength:(NSUInteger)outbuflen error:(NSError * __autoreleasing *)error;
-- (NSInteger)encrypt:(unsigned char *)buf length:(unsigned long long)length masterIV:(NSData *)theMasterIV dataIVAndSymmetricKey:(NSData *)theDataIVAndSymmetricKey intoOutBuffer:(unsigned char *)outbuf outBufferLength:(NSUInteger)outbuflen error:(NSError * __autoreleasing *)error;
-
 - (NSData *)decrypt:(NSData *)theData error:(NSError * __autoreleasing *)error;
 - (NSInteger)decrypt:(unsigned char *)buf length:(unsigned long long)length intoOutBuffer:(unsigned char *)outbuf outBufferLength:(NSUInteger)outbuflen error:(NSError * __autoreleasing *)error;
 @end
