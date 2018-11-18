@@ -35,7 +35,6 @@
 + (int)encryptedBlobHeaderLength;
 
 - (instancetype)initWithKeySet:(KeySet *)theKeySet;
-- (NSString *)blobIdForBytes:(unsigned char *)buf length:(unsigned long long)length;
 
 - (NSData *)decrypt:(NSData *)theData error:(NSError * __autoreleasing *)error;
 - (NSInteger)decrypt:(unsigned char *)buf length:(unsigned long long)length intoOutBuffer:(unsigned char *)outbuf outBufferLength:(NSUInteger)outbuflen error:(NSError * __autoreleasing *)error;

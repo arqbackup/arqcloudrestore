@@ -69,25 +69,6 @@
     return @"EncryptorErrorDomain";
 }
 
-- (NSString *)blobIdForBytes:(unsigned char *)buf length:(unsigned long long)length {
-    unsigned char digest[CC_SHA256_DIGEST_LENGTH];
-    CC_SHA256_CTX ctx;
-    CC_SHA256_Init(&ctx);
-    CC_SHA256_Update(&ctx, [_keySet.blobIdSalt bytes], (CC_LONG)[_keySet.blobIdSalt length]);
-    
-    unsigned long long offset = 0;
-    while (offset < length) {
-        unsigned long long lenThisTime = length - offset;
-        if (lenThisTime > UINT_MAX) {
-            lenThisTime = UINT_MAX;
-        }
-        CC_SHA256_Update(&ctx, buf + offset, (unsigned int)lenThisTime);
-        offset += lenThisTime;
-    }
-    CC_SHA256_Final(digest, &ctx);
-    return [NSString hexStringWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
-
-}
 - (NSData *)decrypt:(NSData *)theObject error:(NSError * __autoreleasing *)error {
     size_t outbufsize = [theObject length] - (ENCRYPTED_BLOB_HEADER_LEN + CC_SHA256_DIGEST_LENGTH + IV_LEN + ENCRYPTED_DATA_IV_AND_SYMMETRIC_KEY_LEN);
     NSMutableData *ret = [NSMutableData dataWithLength:outbufsize];
