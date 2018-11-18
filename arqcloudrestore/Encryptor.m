@@ -49,8 +49,6 @@
 
 @interface Encryptor() {
     KeySet *_keySet;
-    unsigned char *_symmetricKey;
-    NSLock *_symmetricKeyLock;
     int _encryptCount;
 
 }
@@ -64,15 +62,8 @@
 - (instancetype)initWithKeySet:(KeySet *)theKeySet {
     if (self = [super init]) {
         _keySet = theKeySet;
-        _symmetricKey = (unsigned char *)malloc(SYMMETRIC_KEY_LEN);
-        _symmetricKeyLock = [[NSLock alloc] init];
-        [_symmetricKeyLock setName:@"symmetric key lock"];
-        [self resetSymmetricKey];
     }
     return self;
-}
-- (void)dealloc {
-    free(_symmetricKey);
 }
 + (NSString *)errorDomain {
     return @"EncryptorErrorDomain";
@@ -185,12 +176,6 @@
 
 
 #pragma mark internal
-- (void)resetSymmetricKey {
-    // Create 32-byte random symmetric key.
-    for (int i = 0; i < SYMMETRIC_KEY_LEN; i++) {
-        _symmetricKey[i] = (unsigned char)arc4random_uniform(256);
-    }
-}
 - (NSString *)errorMessageForStatus:(CCCryptorStatus)status {
     if (status == kCCBufferTooSmall) {
         return @"buffer too small";
