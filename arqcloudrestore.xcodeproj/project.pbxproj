@@ -419,7 +419,7 @@
 		F8722EC721860A9800C96D0D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Haystack Software";
 				TargetAttributes = {
 					F8722ECE21860A9800C96D0D = {
@@ -433,6 +433,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = F8722EC621860A9800C96D0D;
 			productRefGroup = F8722ED021860A9800C96D0D /* Products */;
@@ -631,6 +632,7 @@
 		F8722ED721860A9800C96D0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48ZCSDVL96;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -644,6 +646,7 @@
 		F8722ED821860A9800C96D0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48ZCSDVL96;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
